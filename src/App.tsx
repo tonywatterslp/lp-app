@@ -3,6 +3,7 @@ import CustomAlert from './components/alerts/alerts';
 import { VerticalNavigation } from '@learningpool/ui';
 
 
+
 type AlertObject = {
   type: 'success' | 'info' | 'warning' | 'error';
   message: string;
