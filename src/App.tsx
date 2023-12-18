@@ -8,6 +8,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { createTheme } from "@mui/material";
+import LeftNavbar from "./components/navigation/VerticalNavigation"
 
 type AlertObject = {
   type: "success" | "info" | "warning" | "error";
@@ -101,7 +102,7 @@ function App() {
           ]}
         />
 
-        <div className="alert-container">
+        {/* <div className="alert-container">
           <CustomAlert
             type={currentAlert.type}
             message={currentAlert.message}
@@ -125,8 +126,13 @@ function App() {
             You can customize the alert types and messages to suit your
             application's needs.
           </p>
-        </div>
+        </div> */}
       </div>
+
+<LeftNavbar/>
+
+
+
     </ThemeProvider>
   );
 }
