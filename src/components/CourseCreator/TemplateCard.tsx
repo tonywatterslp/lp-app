@@ -12,22 +12,21 @@ import { Template } from "./CourseCreator";
 interface ITemplateProps {
   template: Template;
   selected: boolean;
+  clickHandler: () => void;
 }
 
 const TemplateCard = (props: ITemplateProps) => {
-  const { template, selected } = props;
+  const { template, selected, clickHandler } = props;
   return (
     <Card
       variant="outlined"
       style={{
         borderRadius: "20px",
         boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-        border: selected ? "3px solid #2196f3" : "none",
+        border: selected ? "4px solid #2196f3" : "4px solid #ffffff",
       }}
     >
-      <CardActionArea
-        onClick={() => console.log(`Clicked on ${template.title}`)}
-      >
+      <CardActionArea onClick={clickHandler}>
         <CardMedia
           component="img"
           height="80"
@@ -38,11 +37,19 @@ const TemplateCard = (props: ITemplateProps) => {
           <Typography
             variant="h5"
             component="h3"
-            style={{
-              fontWeight: "normal",
-              fontSize: "1.4em",
-              textAlign: "center",
-            }}
+            style={
+              selected
+                ? {
+                    fontWeight: "bold",
+                    fontSize: "1.4em",
+                    textAlign: "center",
+                  }
+                : {
+                    fontWeight: "normal",
+                    fontSize: "1.4em",
+                    textAlign: "center",
+                  }
+            }
           >
             {template.title}
           </Typography>

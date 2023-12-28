@@ -134,7 +134,7 @@ const templateReducer = (state: State, action: Action) => {
 const CourseCreator = () => {
   const [state, dispatch] = React.useReducer(templateReducer, initialState);
   return (
-    <Dialog open={true}>
+    <Dialog open={true} maxWidth={false}>
       <DialogTitle>Choose Template</DialogTitle>
       <DialogContent>
         {categories.map((category) => {
@@ -161,6 +161,12 @@ const CourseCreator = () => {
                       <TemplateCard
                         template={template}
                         selected={state.selectedTemplateId === template.id}
+                        clickHandler={() => {
+                          dispatch({
+                            type: ActionTypes.SELECT_TEMPLATE,
+                            payload: template.id,
+                          });
+                        }}
                       />
                     </Box>
                   );
