@@ -26,7 +26,7 @@ interface CourseTableProps {
 
 const CourseTable: React.FC<CourseTableProps> = ({ courses }) => {
   const [page, setPage] = React.useState(0); // Added state for page
-  const [rowsPerPage, setRowsPerPage] = React.useState(5); // Added state for rows per page
+  const [rowsPerPage, setRowsPerPage] = React.useState(10); // Added state for rows per page
 
   const handleChangePage = (
     event: React.MouseEvent<HTMLButtonElement> | null,

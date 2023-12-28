@@ -113,6 +113,51 @@ const courses: Course[] = [
     dateCreated: "2022-01-04",
   },
   {
+    name: "Article on Retail Trends",
+    alias: "article-on-retail-trends",
+    type: "Read an Article",
+    visibility: "Public",
+    levels: 1,
+    enrolments: 0,
+    dateCreated: "2022-01-09",
+  },
+  {
+    name: "Podcast: Customer Service Strategies",
+    alias: "podcast-customer-service-strategies",
+    type: "Listen to a Podcast",
+    visibility: "Public",
+    levels: 1,
+    enrolments: 0,
+    dateCreated: "2022-01-09",
+  },
+  {
+    name: "Article: Effective Visual Merchandising",
+    alias: "article-effective-visual-merchandising",
+    type: "Read an Article",
+    visibility: "Public",
+    levels: 1,
+    enrolments: 0,
+    dateCreated: "2022-01-09",
+  },
+  {
+    name: "Podcast: Retail Sales Techniques",
+    alias: "podcast-retail-sales-techniques",
+    type: "Listen to a Podcast",
+    visibility: "Public",
+    levels: 1,
+    enrolments: 0,
+    dateCreated: "2022-01-09",
+  },
+  {
+    name: "Article: Store Operations Best Practices",
+    alias: "article-store-operations-best-practices",
+    type: "Read an Article",
+    visibility: "Public",
+    levels: 1,
+    enrolments: 0,
+    dateCreated: "2022-01-09",
+  },
+  {
     name: "Visual Merchandising Techniques",
     alias: "visual-merchandising-techniques",
     type: "Undertake an Online Course",
@@ -160,7 +205,9 @@ function App() {
       <div className="App" style={{ padding: "20px", paddingLeft: "100px" }}>
         <VerticalNavigation />
         <Stack direction={"row"}>
-          <Typography flexGrow={1}>Learning Experiences</Typography>
+          <Typography flexGrow={1} variant="h5" component="h1">
+            Learning Experiences
+          </Typography>
           <Stack
             direction={"row-reverse"}
             alignItems={"flex-end"}
