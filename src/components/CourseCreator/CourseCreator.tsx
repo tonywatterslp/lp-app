@@ -145,12 +145,12 @@ const CourseCreator = () => {
                 component="h2"
                 style={{
                   marginTop: "0.5rem",
-                  marginBottom: "0.1rem",
-                  marginInlineStart: "20px",
-                  marginInlineEnd: "20px",
+                  marginBottom: "0rem",
                   fontSize: "1.1em",
                   fontWeight: "bold",
                 }}
+                marginInlineStart={3}
+                marginInlineEnd={3}
               >
                 {category.title}
               </Typography>
@@ -161,12 +161,14 @@ const CourseCreator = () => {
                 style={{
                   background: "linear-gradient(to bottom, white, #efefef)",
                 }}
+                paddingBottom={2}
+                px={2}
               >
                 {category.templates.map((templateId) => {
                   const template = templates.find((t) => t.id === templateId);
                   if (!template) return null;
                   return (
-                    <Box width={260} key={template.id} m={2}>
+                    <Box width={260} key={template.id} mx={1} my={1}>
                       <TemplateCard
                         template={template}
                         selected={state.selectedTemplateId === template.id}
