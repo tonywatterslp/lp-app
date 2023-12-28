@@ -7,8 +7,9 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import { createTheme } from "@mui/material";
+import { Box, Button, Stack, Typography, createTheme } from "@mui/material";
 import CourseCreator from "./components/CourseCreator/CourseCreator";
+import CourseTable, { Course } from "./components/CourseTable/CourseTable";
 
 type AlertObject = {
   type: "success" | "info" | "warning" | "error";
@@ -56,34 +57,141 @@ export const defaultTheme = {
   // }
 };
 
+const courses: Course[] = [
+  {
+    name: "Introduction to Retail Management",
+    alias: "introduction-to-retail-management",
+    type: "Undertake an Online Course",
+    visibility: "Public",
+    levels: 3,
+    enrolments: 118,
+    dateCreated: "2022-01-01",
+  },
+  {
+    name: "Merchandising Strategies",
+    alias: "merchandising-strategies",
+    type: "Undertake an Online Course",
+    visibility: "Public",
+    levels: 1,
+    enrolments: 115020,
+    dateCreated: "2022-01-02",
+  },
+  {
+    name: "Store Operations and Customer Service",
+    alias: "store-operations-and-customer-service",
+    type: "Undertake an Online Course",
+    visibility: "Secret",
+    levels: 1,
+    enrolments: 998,
+    dateCreated: "2022-01-03",
+  },
+  {
+    name: "Basic Retail Store Health and Safety Guide",
+    alias: "basic-retail-store-health-and-safety-guide",
+    type: "Watch a Video",
+    visibility: "Public",
+    levels: 1,
+    enrolments: 48,
+    dateCreated: "2022-07-15",
+  },
+  {
+    name: "2023 Product Showreel",
+    alias: "2023-product-showreel",
+    type: "Watch a Video",
+    visibility: "Public",
+    levels: 1,
+    enrolments: 48,
+    dateCreated: "2022-07-15",
+  },
+  {
+    name: "Advanced Retail Management",
+    alias: "advanced-retail-management",
+    type: "Undertake an Online Course",
+    visibility: "Public",
+    levels: 4,
+    enrolments: 250,
+    dateCreated: "2022-01-04",
+  },
+  {
+    name: "Visual Merchandising Techniques",
+    alias: "visual-merchandising-techniques",
+    type: "Undertake an Online Course",
+    visibility: "Public",
+    levels: 2,
+    enrolments: 500,
+    dateCreated: "2022-01-05",
+  },
+  {
+    name: "Customer Relationship Management",
+    alias: "customer-relationship-management",
+    type: "Undertake an Online Course",
+    visibility: "Public",
+    levels: 2,
+    enrolments: 300,
+    dateCreated: "2022-01-06",
+  },
+  {
+    name: "Advanced Store Operations",
+    alias: "advanced-store-operations",
+    type: "Undertake an Online Course",
+    visibility: "Secret",
+    levels: 2,
+    enrolments: 150,
+    dateCreated: "2022-01-07",
+  },
+  {
+    name: "Retail Sales Techniques",
+    alias: "retail-sales-techniques",
+    type: "Undertake an Online Course",
+    visibility: "Public",
+    levels: 1,
+    enrolments: 1000,
+    dateCreated: "2022-01-08",
+  },
+];
+
 function App() {
-  // Create an array of sample alerts
-  const alerts: AlertObject[] = [
-    { type: "success", message: "This is a success alert. Well done!" },
-    { type: "info", message: "This is an info alert. Pay attention!" },
-    { type: "warning", message: "This is a warning alert. Be cautious!" },
-    { type: "error", message: "This is an error alert. Something went wrong!" },
-  ];
-
-  const [open, setOpen] = useState(false);
-  const [currentAlert, setCurrentAlert] = useState<AlertObject>(alerts[0]);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen = (alert: AlertObject) => {
-    setCurrentAlert(alert);
-    setOpen(true);
-  };
-
   const theme = createTheme(defaultTheme);
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
       <div className="App" style={{ padding: "20px", paddingLeft: "100px" }}>
         <VerticalNavigation />
-        <CourseCreator />
+        <Stack direction={"row"}>
+          <Typography flexGrow={1}>Learning Experiences</Typography>
+          <Stack
+            direction={"row-reverse"}
+            alignItems={"flex-end"}
+            flexGrow={1}
+            spacing={1}
+          >
+            <Button
+              variant="outlined"
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              New Learning Experience
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              Create from Template
+            </Button>
+          </Stack>
+        </Stack>
+        <CourseTable courses={courses} />
+        <CourseCreator
+          isOpen={isOpen}
+          onCloseHandler={() => {
+            setIsOpen(false);
+          }}
+        />
       </div>
     </ThemeProvider>
   );

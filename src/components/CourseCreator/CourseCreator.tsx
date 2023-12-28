@@ -129,10 +129,13 @@ const templateReducer = (state: State, action: Action) => {
   }
 };
 
-const CourseCreator = () => {
+const CourseCreator = (props: {
+  isOpen: boolean;
+  onCloseHandler: () => void;
+}) => {
   const [state, dispatch] = React.useReducer(templateReducer, initialState);
   return (
-    <Dialog open={true} maxWidth={false}>
+    <Dialog open={props.isOpen} maxWidth={false} onClose={props.onCloseHandler}>
       <DialogTitle>Choose Template</DialogTitle>
       <DialogContent style={{ padding: 0 }}>
         {categories.map((category) => {
@@ -186,8 +189,10 @@ const CourseCreator = () => {
         })}
       </DialogContent>
       <DialogActions>
-        <Button>Cancel</Button>
-        <Button variant="contained">Create</Button>
+        <Button onClick={props.onCloseHandler}>Cancel</Button>
+        <Button onClick={props.onCloseHandler} variant="contained">
+          Create
+        </Button>
       </DialogActions>
     </Dialog>
   );
