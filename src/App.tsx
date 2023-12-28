@@ -8,6 +8,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { createTheme } from "@mui/material";
+import CourseCreator from "./components/CourseCreator/CourseCreator";
 
 type AlertObject = {
   type: "success" | "info" | "warning" | "error";
@@ -80,52 +81,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        {/* <VerticalNavigation /> */}
-        <h1>Custom Alert Component</h1>
-        <div className="alert-buttons">
-          {alerts.map((alert, index) => (
-            <button key={index} onClick={() => handleOpen(alert)}>
-              Show {alert.type.charAt(0).toUpperCase() + alert.type.slice(1)}{" "}
-              Alert
-            </button>
-          ))}
-        </div>
-        <Dialogue />
-
-        <RadioButtonsGroup
-          buttons={[
-            { value: "male", label: "Male" },
-            { value: "female", label: "Female" },
-            { value: "other", label: "Other" },
-          ]}
-        />
-
-        <div className="alert-container">
-          <CustomAlert
-            type={currentAlert.type}
-            message={currentAlert.message}
-            open={open}
-            onClose={handleClose}
-          />
-          <h2>How to Use the Custom Alert Component</h2>
-          <p>To use the custom alert component, follow these steps:</p>
-          <ol>
-            <li>Import the `Alert` component into your React application.</li>
-            <li>
-              Create an array of alert objects with `type` (success, info,
-              warning, error) and `message` properties.
-            </li>
-            <li>
-              Render the `Alert` component for each alert by mapping through the
-              array and providing the `type` and `message` properties as props.
-            </li>
-          </ol>
-          <p>
-            You can customize the alert types and messages to suit your
-            application's needs.
-          </p>
-        </div>
+      <div className="App" style={{ padding: "20px", paddingLeft: "100px" }}>
+        <VerticalNavigation />
+        <CourseCreator />
       </div>
     </ThemeProvider>
   );
