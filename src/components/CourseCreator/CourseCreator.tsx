@@ -136,7 +136,7 @@ const CourseCreator = () => {
   return (
     <Dialog open={true} maxWidth={false}>
       <DialogTitle>Choose Template</DialogTitle>
-      <DialogContent>
+      <DialogContent style={{ padding: 0 }}>
         {categories.map((category) => {
           return (
             <>
@@ -146,13 +146,22 @@ const CourseCreator = () => {
                 style={{
                   marginTop: "0.5rem",
                   marginBottom: "0.1rem",
+                  marginInlineStart: "20px",
+                  marginInlineEnd: "20px",
                   fontSize: "1.1em",
                   fontWeight: "bold",
                 }}
               >
                 {category.title}
               </Typography>
-              <Box display="flex" flexWrap="wrap" justifyContent="inline-start">
+              <Box
+                display="flex"
+                flexWrap="wrap"
+                justifyContent="inline-start"
+                style={{
+                  background: "linear-gradient(to bottom, white, #efefef)",
+                }}
+              >
                 {category.templates.map((templateId) => {
                   const template = templates.find((t) => t.id === templateId);
                   if (!template) return null;

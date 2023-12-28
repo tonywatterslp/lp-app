@@ -60,6 +60,8 @@ const TemplateCard = (props: ITemplateProps) => {
               marginTop: "0.1rem",
               fontSize: "1.1em",
               textAlign: "center",
+              display: "block",
+              height: 36,
             }}
           >
             {template.description}
