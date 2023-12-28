@@ -23,7 +23,7 @@ const TemplateCard = (props: ITemplateProps) => {
       style={{
         borderRadius: "20px",
         boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-        border: selected ? "4px solid #2196f3" : "4px solid #ffffff",
+        border: selected ? "5px solid #2196f3" : "5px solid #ffffff",
       }}
     >
       <CardActionArea onClick={clickHandler}>

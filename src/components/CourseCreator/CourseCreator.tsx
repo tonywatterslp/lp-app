@@ -50,16 +50,14 @@ const templates = [
     title: "Document",
     image:
       "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description:
-      "Create an experience from a single document such as a PDF or Powerpoint",
+    description: "A single document, e.g. a PDF",
   },
   {
     id: 6,
     title: "Video",
     image:
       "https://images.unsplash.com/photo-1556132877-ded3bb0173b5?q=80&w=3273&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description:
-      "Create an experience from an online video such as YouTube or Vimeo",
+    description: "An online video, e.g. YouTube or Vimeo",
   },
   {
     id: 7,
