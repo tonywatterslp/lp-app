@@ -19,8 +19,6 @@ function useRadioGroup(
           ? radioButtonsRef.current.indexOf(current)
           : 0;
 
-      console.log(radioButtonsRef);
-
       switch (e.key) {
         case "ArrowLeft":
         case "ArrowUp": {
@@ -41,14 +39,11 @@ function useRadioGroup(
         }
       }
     }
-    console.log(buttonsRef.current);
-    console.log(radioButtonsRef);
+
     if (buttonsRef.current) {
-      console.log("adding a listener");
       document.addEventListener("keydown", handleKeyDown);
 
       return () => {
-        console.log("removing a listener");
         document.removeEventListener("keydown", handleKeyDown);
       };
     }

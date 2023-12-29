@@ -7,7 +7,7 @@ import {
   makeStyles,
   styled,
 } from "@mui/material";
-import { Template } from "./CourseCreator";
+import { Template } from "./data";
 
 interface ITemplateProps {
   template: Template;
