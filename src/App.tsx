@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { VerticalNavigation, ThemeProvider } from "@learningpool/ui";
 
@@ -190,6 +190,24 @@ function App() {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  // This effect runs once after the component mounts
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Check if the pressed key is 'n'
+      if (event.key === "t" && event.ctrlKey) {
+        setIsOpen(true);
+      }
+    };
+
+    // Add the event listener
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup function to remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []); // Empty dependency array means this effect runs once on mount and cleanup on unmount
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App" style={{ padding: "20px", paddingLeft: "100px" }}>
@@ -209,6 +227,7 @@ function App() {
               onClick={() => {
                 setIsOpen(true);
               }}
+              aria-keyshortcuts="Control+T"
             >
               New Learning Experience
             </Button>

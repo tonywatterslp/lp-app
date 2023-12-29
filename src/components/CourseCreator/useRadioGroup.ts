@@ -25,7 +25,7 @@ function useRadioGroup(
           const previousIndex =
             index > 0 ? index - 1 : radioButtonsRef.current.length - 1;
           const targetButton = radioButtonsRef.current[previousIndex];
-
+          e.preventDefault();
           targetButton.focus();
           break;
         }
@@ -34,6 +34,7 @@ function useRadioGroup(
         case "ArrowDown": {
           const nextIndex = (index + 1) % radioButtonsRef.current.length;
           const targetButton = radioButtonsRef.current[nextIndex];
+          e.preventDefault();
           targetButton.focus();
           break;
         }

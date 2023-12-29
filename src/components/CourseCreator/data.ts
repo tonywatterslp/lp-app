@@ -1,7 +1,7 @@
 const templates = [
   {
     id: 1,
-    title: "Elearning",
+    title: "E-Learning",
     image:
       "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1674&auto=format&fit=crop",
     description: "A standard elearning package such as SCORM or xAPI",
