@@ -4,6 +4,8 @@ import {
   CardMedia,
   Typography,
   CardActionArea,
+  makeStyles,
+  styled,
 } from "@mui/material";
 import { Template } from "./CourseCreator";
 
@@ -14,9 +16,16 @@ interface ITemplateProps {
   isFirst: boolean;
 }
 
+const StyledCardActionArea = styled(CardActionArea)({
+  "&.Mui-focusVisible": {
+    outline: "3px solid darkgrey",
+  },
+});
+
 const TemplateCard = (props: ITemplateProps) => {
   const { template, isSelected, clickHandler, isFirst } = props;
   const templateId = `template-id-${template.id}`;
+
   return (
     <Card
       variant="outlined"
@@ -27,7 +36,7 @@ const TemplateCard = (props: ITemplateProps) => {
         background: "transparent",
       }}
     >
-      <CardActionArea
+      <StyledCardActionArea
         onClick={clickHandler}
         role="radio"
         aria-checked={isSelected ? true : false}
@@ -84,7 +93,7 @@ const TemplateCard = (props: ITemplateProps) => {
             {template.description}
           </Typography>
         </CardContent>
-      </CardActionArea>
+      </StyledCardActionArea>
     </Card>
   );
 };
