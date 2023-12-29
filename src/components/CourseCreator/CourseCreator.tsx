@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Typography,
   Box,
@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import TemplateCard from "./TemplateCard";
 import useRadioGroup from "./useRadioGroup";
+import { isOptionalChain } from "typescript";
 
 const templates = [
   {
@@ -131,81 +132,94 @@ const CourseCreator = (props: {
   onCloseHandler: () => void;
 }) => {
   const [state, dispatch] = React.useReducer(templateReducer, initialState);
-  const buttonsRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const dialogRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
-  useRadioGroup(buttonsRef);
+  useRadioGroup(dialogRef, props.isOpen);
+
+  // Super hacky hack here to ensure that the component rerenders :(
+  useEffect(() => {
+    dispatch({
+      type: ActionTypes.SELECT_TEMPLATE,
+      payload: 1,
+    });
+  }, [props.isOpen]);
 
   return (
-    <Dialog
-      role="radiogroup"
-      aria-labelledby={TITLE_ID}
-      open={props.isOpen}
-      maxWidth={false}
-      onClose={props.onCloseHandler}
-      ref={buttonsRef}
-    >
-      <DialogTitle id={TITLE_ID}>Choose Template</DialogTitle>
-      <div id="radio-group">
-        <DialogContent style={{ padding: 0 }}>
-          {categories.map((category) => {
-            return (
-              <div key={category.id}>
-                <Typography
-                  variant="h5"
-                  component="h2"
-                  style={{
-                    marginTop: "0.5rem",
-                    marginBottom: "0rem",
-                    fontSize: "1.1em",
-                    fontWeight: "bold",
-                  }}
-                  marginInlineStart={3}
-                  marginInlineEnd={3}
-                >
-                  {category.title}
-                </Typography>
-                <Box
-                  display="flex"
-                  flexWrap="wrap"
-                  justifyContent="inline-start"
-                  style={{
-                    background: "linear-gradient(to bottom, white, #efefef)",
-                  }}
-                  paddingBottom={2}
-                  px={2}
-                >
-                  {category.templates.map((templateId, index) => {
-                    const template = templates.find((t) => t.id === templateId);
-                    if (!template) return null;
-                    return (
-                      <Box width={260} key={template.id} mx={1} my={1}>
-                        <TemplateCard
-                          isFirst={index === 0}
-                          template={template}
-                          isSelected={state.selectedTemplateId === template.id}
-                          clickHandler={() => {
-                            dispatch({
-                              type: ActionTypes.SELECT_TEMPLATE,
-                              payload: template.id,
-                            });
-                          }}
-                        />
-                      </Box>
-                    );
-                  })}
-                </Box>
-              </div>
-            );
-          })}
-        </DialogContent>
-      </div>
-      <DialogActions>
-        <Button onClick={props.onCloseHandler}>Cancel</Button>
-        <Button onClick={props.onCloseHandler} variant="contained">
-          Create
-        </Button>
-      </DialogActions>
-    </Dialog>
+    <div>
+      <Dialog
+        role="radiogroup"
+        aria-labelledby={TITLE_ID}
+        open={props.isOpen}
+        maxWidth={false}
+        onClose={props.onCloseHandler}
+      >
+        <DialogTitle id={TITLE_ID}>Choose Template</DialogTitle>
+        <div id="radio-group" ref={props.isOpen ? dialogRef : null}>
+          <DialogContent style={{ padding: 0 }}>
+            {categories.map((category) => {
+              return (
+                <div key={category.id}>
+                  <Typography
+                    variant="h5"
+                    component="h2"
+                    style={{
+                      marginTop: "0.5rem",
+                      marginBottom: "0rem",
+                      fontSize: "1.1em",
+                      fontWeight: "bold",
+                    }}
+                    marginInlineStart={3}
+                    marginInlineEnd={3}
+                  >
+                    {category.title}
+                  </Typography>
+                  <Box
+                    display="flex"
+                    flexWrap="wrap"
+                    justifyContent="inline-start"
+                    style={{
+                      background: "linear-gradient(to bottom, white, #efefef)",
+                    }}
+                    paddingBottom={2}
+                    px={2}
+                  >
+                    {category.templates.map((templateId, index) => {
+                      const template = templates.find(
+                        (t) => t.id === templateId
+                      );
+                      if (!template) return null;
+                      return (
+                        <Box width={260} key={template.id} mx={1} my={1}>
+                          <TemplateCard
+                            isFirst={index === 0}
+                            template={template}
+                            isSelected={
+                              state.selectedTemplateId === template.id
+                            }
+                            clickHandler={() => {
+                              dispatch({
+                                type: ActionTypes.SELECT_TEMPLATE,
+                                payload: template.id,
+                              });
+                            }}
+                          />
+                        </Box>
+                      );
+                    })}
+                  </Box>
+                </div>
+              );
+            })}
+          </DialogContent>
+        </div>
+        <DialogActions>
+          <Button onClick={props.onCloseHandler}>Cancel</Button>
+          <Button onClick={props.onCloseHandler} variant="contained">
+            Create
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 };
 

@@ -1,18 +1,25 @@
 import { useEffect, useRef } from "react";
 
-function useRadioGroup(buttonsRef: React.MutableRefObject<HTMLDivElement>) {
+function useRadioGroup(
+  buttonsRef: React.MutableRefObject<HTMLDivElement>,
+  isOpen: boolean
+) {
   const radioButtonsRef = useRef<HTMLButtonElement[]>([]);
 
   useEffect(() => {
-    if (buttonsRef.current) {
+    if (buttonsRef.current)
       radioButtonsRef.current = Array.from(
         buttonsRef.current.querySelectorAll('button[role="radio"]')
       );
-    }
 
     function handleKeyDown(e: KeyboardEvent) {
       const current = document.activeElement as HTMLButtonElement;
-      const index = radioButtonsRef.current.indexOf(current);
+      const index =
+        radioButtonsRef.current.indexOf(current) > -1
+          ? radioButtonsRef.current.indexOf(current)
+          : 0;
+
+      console.log(radioButtonsRef);
 
       switch (e.key) {
         case "ArrowLeft":
@@ -20,6 +27,7 @@ function useRadioGroup(buttonsRef: React.MutableRefObject<HTMLDivElement>) {
           const previousIndex =
             index > 0 ? index - 1 : radioButtonsRef.current.length - 1;
           const targetButton = radioButtonsRef.current[previousIndex];
+
           targetButton.focus();
           break;
         }
@@ -33,6 +41,8 @@ function useRadioGroup(buttonsRef: React.MutableRefObject<HTMLDivElement>) {
         }
       }
     }
+    console.log(buttonsRef.current);
+    console.log(radioButtonsRef);
     if (buttonsRef.current) {
       console.log("adding a listener");
       document.addEventListener("keydown", handleKeyDown);
@@ -42,7 +52,7 @@ function useRadioGroup(buttonsRef: React.MutableRefObject<HTMLDivElement>) {
         document.removeEventListener("keydown", handleKeyDown);
       };
     }
-  }, [buttonsRef.current]);
+  }, [buttonsRef.current, isOpen]);
 }
 
 export default useRadioGroup;
