@@ -142,9 +142,10 @@ const CourseCreator = (props: {
       open={props.isOpen}
       maxWidth={false}
       onClose={props.onCloseHandler}
+      ref={buttonsRef}
     >
       <DialogTitle id={TITLE_ID}>Choose Template</DialogTitle>
-      <div id="radio-group" ref={buttonsRef}>
+      <div id="radio-group">
         <DialogContent style={{ padding: 0 }}>
           {categories.map((category) => {
             return (
