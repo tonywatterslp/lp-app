@@ -1,20 +1,10 @@
-import React, { useState } from "react";
-import CustomAlert from "./components/alerts/alerts";
+import { useState } from "react";
+
 import { VerticalNavigation, ThemeProvider } from "@learningpool/ui";
-import Dialogue from "./components/Dialogue/Dialogue";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import { Box, Button, Stack, Typography, createTheme } from "@mui/material";
+
+import { Button, Stack, Typography, createTheme } from "@mui/material";
 import CourseCreator from "./components/CourseCreator/CourseCreator";
 import CourseTable, { Course } from "./components/CourseTable/CourseTable";
-
-type AlertObject = {
-  type: "success" | "info" | "warning" | "error";
-  message: string;
-};
 
 const DEFAULT_HEADER_TYPOGRAPHY = {
   fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -241,39 +231,6 @@ function App() {
         />
       </div>
     </ThemeProvider>
-  );
-}
-
-function RadioButtonsGroup({
-  buttons,
-}: {
-  buttons: { value: string; label: string }[];
-}) {
-  const [value, setValue] = React.useState(buttons[0].value);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  };
-
-  return (
-    <FormControl component="fieldset">
-      <FormLabel component="legend">Gender</FormLabel>
-      <RadioGroup
-        aria-label="gender"
-        defaultValue={buttons[0].value}
-        name="radio-buttons-group"
-        value={value}
-        onChange={handleChange}
-      >
-        {buttons.map((button) => (
-          <FormControlLabel
-            value={button.value}
-            control={<Radio />}
-            label={button.label}
-          />
-        ))}
-      </RadioGroup>
-    </FormControl>
   );
 }
 
