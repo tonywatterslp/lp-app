@@ -38,7 +38,7 @@ function useRadioGroup(buttonsRef: React.MutableRefObject<HTMLDivElement>) {
       }
     }
 
-    console.log("in hook");
+    console.log(buttonsRef.current);
 
     // Add event listener if buttons ref exists
     if (buttonsRef.current) {

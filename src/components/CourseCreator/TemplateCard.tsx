@@ -20,6 +20,9 @@ const StyledCardActionArea = styled(CardActionArea)({
   "&.Mui-focusVisible": {
     outline: "3px solid darkgrey",
   },
+  ":focus": {
+    outline: "3px solid darkgrey",
+  },
 });
 
 const TemplateCard = (props: ITemplateProps) => {
