@@ -11,34 +11,53 @@ import { Template } from "./CourseCreator";
 
 interface ITemplateProps {
   template: Template;
-  selected: boolean;
+  isSelected: boolean;
   clickHandler: () => void;
+  isFirst: boolean;
 }
 
 const TemplateCard = (props: ITemplateProps) => {
-  const { template, selected, clickHandler } = props;
+  const { template, isSelected, clickHandler, isFirst } = props;
+  const templateId = `template-id-${template.id}`;
   return (
     <Card
       variant="outlined"
       style={{
         borderRadius: "20px",
-        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-        border: selected ? "5px solid #2196f3" : "5px solid #ffffff",
+        border: isSelected ? "5px solid #2196f3" : "0px",
+        padding: isSelected ? 0 : 5,
+        background: "transparent",
       }}
     >
-      <CardActionArea onClick={clickHandler}>
+      <CardActionArea
+        onClick={clickHandler}
+        role="radio"
+        aria-checked={isSelected ? true : false}
+        tab-index={isFirst ? "0" : "-1"}
+        style={{
+          borderRadius: "15px",
+          boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+          background: "white",
+        }}
+        aria-labelledby={templateId}
+      >
         <CardMedia
           component="img"
           height="80"
           image={template.image}
           alt={template.title}
+          style={{
+            borderRadius: "15px 15px 0px 0px",
+            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+          }}
         />
         <CardContent>
           <Typography
+            id={templateId}
             variant="h5"
             component="h3"
             style={
-              selected
+              isSelected
                 ? {
                     fontWeight: "bold",
                     fontSize: "1.4em",

@@ -204,7 +204,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App" style={{ padding: "20px", paddingLeft: "100px" }}>
         <VerticalNavigation />
-        <Stack direction={"row"}>
+        <Stack direction={"row"} marginBottom={2}>
           <Typography flexGrow={1} variant="h5" component="h1">
             Learning Experiences
           </Typography>

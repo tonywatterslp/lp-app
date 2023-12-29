@@ -1,12 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
-  Grid,
-  Card,
-  CardContent,
-  CardMedia,
   Typography,
   Box,
-  Modal,
   Dialog,
   DialogContent,
   DialogActions,
@@ -14,7 +9,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 import TemplateCard from "./TemplateCard";
-import { stat } from "fs";
+import useRadioGroup from "./useRadioGroup";
 
 const templates = [
   {
@@ -129,65 +124,80 @@ const templateReducer = (state: State, action: Action) => {
   }
 };
 
+const TITLE_ID = "choose-template-title";
+
 const CourseCreator = (props: {
   isOpen: boolean;
   onCloseHandler: () => void;
 }) => {
   const [state, dispatch] = React.useReducer(templateReducer, initialState);
+  const buttonsRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+
+  useRadioGroup(buttonsRef);
+
   return (
-    <Dialog open={props.isOpen} maxWidth={false} onClose={props.onCloseHandler}>
-      <DialogTitle>Choose Template</DialogTitle>
-      <DialogContent style={{ padding: 0 }}>
-        {categories.map((category) => {
-          return (
-            <>
-              <Typography
-                variant="h5"
-                component="h2"
-                style={{
-                  marginTop: "0.5rem",
-                  marginBottom: "0rem",
-                  fontSize: "1.1em",
-                  fontWeight: "bold",
-                }}
-                marginInlineStart={3}
-                marginInlineEnd={3}
-              >
-                {category.title}
-              </Typography>
-              <Box
-                display="flex"
-                flexWrap="wrap"
-                justifyContent="inline-start"
-                style={{
-                  background: "linear-gradient(to bottom, white, #efefef)",
-                }}
-                paddingBottom={2}
-                px={2}
-              >
-                {category.templates.map((templateId) => {
-                  const template = templates.find((t) => t.id === templateId);
-                  if (!template) return null;
-                  return (
-                    <Box width={260} key={template.id} mx={1} my={1}>
-                      <TemplateCard
-                        template={template}
-                        selected={state.selectedTemplateId === template.id}
-                        clickHandler={() => {
-                          dispatch({
-                            type: ActionTypes.SELECT_TEMPLATE,
-                            payload: template.id,
-                          });
-                        }}
-                      />
-                    </Box>
-                  );
-                })}
-              </Box>
-            </>
-          );
-        })}
-      </DialogContent>
+    <Dialog
+      role="radiogroup"
+      aria-labelledby={TITLE_ID}
+      open={props.isOpen}
+      maxWidth={false}
+      onClose={props.onCloseHandler}
+    >
+      <DialogTitle id={TITLE_ID}>Choose Template</DialogTitle>
+      <div id="radio-group" ref={buttonsRef}>
+        <DialogContent style={{ padding: 0 }}>
+          {categories.map((category) => {
+            return (
+              <div key={category.id}>
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  style={{
+                    marginTop: "0.5rem",
+                    marginBottom: "0rem",
+                    fontSize: "1.1em",
+                    fontWeight: "bold",
+                  }}
+                  marginInlineStart={3}
+                  marginInlineEnd={3}
+                >
+                  {category.title}
+                </Typography>
+                <Box
+                  display="flex"
+                  flexWrap="wrap"
+                  justifyContent="inline-start"
+                  style={{
+                    background: "linear-gradient(to bottom, white, #efefef)",
+                  }}
+                  paddingBottom={2}
+                  px={2}
+                >
+                  {category.templates.map((templateId, index) => {
+                    const template = templates.find((t) => t.id === templateId);
+                    if (!template) return null;
+                    return (
+                      <Box width={260} key={template.id} mx={1} my={1}>
+                        <TemplateCard
+                          isFirst={index === 0}
+                          template={template}
+                          isSelected={state.selectedTemplateId === template.id}
+                          clickHandler={() => {
+                            dispatch({
+                              type: ActionTypes.SELECT_TEMPLATE,
+                              payload: template.id,
+                            });
+                          }}
+                        />
+                      </Box>
+                    );
+                  })}
+                </Box>
+              </div>
+            );
+          })}
+        </DialogContent>
+      </div>
       <DialogActions>
         <Button onClick={props.onCloseHandler}>Cancel</Button>
         <Button onClick={props.onCloseHandler} variant="contained">
