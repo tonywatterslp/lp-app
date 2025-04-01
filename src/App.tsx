@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 
 import { VerticalNavigation, ThemeProvider } from "@learningpool/ui";
-
 import { Button, Stack, Typography, createTheme } from "@mui/material";
 import CourseCreator from "./components/CourseCreator/CourseCreator";
 import CourseTable, { Course } from "./components/CourseTable/CourseTable";
+
+// Import SVG icons
+import LearningExperiencesIcon from "./assets/icons/LearningExperiencesIcon.svg";
+import ResourcesIcon from "./assets/icons/ResourcesIcon.svg";
+import PlaylistsIcon from "./assets/icons/PlaylistsIcon.svg";
+import SkillsIcon from "./assets/icons/SkillsIcon.svg";
 
 const DEFAULT_HEADER_TYPOGRAPHY = {
   fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -190,6 +195,30 @@ function App() {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  // Menu items for vertical navigation with imported SVG icons
+  const navItems = [
+    {
+      label: "Learning Experiences",
+      onClick: () => (window.location.href = "/learning-experiences"),
+      icon: <LearningExperiencesIcon />,
+    },
+    {
+      label: "Resources",
+      onClick: () => (window.location.href = "/resources"),
+      icon: <ResourcesIcon />,
+    },
+    {
+      label: "Playlists",
+      onClick: () => (window.location.href = "/playlists"),
+      icon: <PlaylistsIcon />,
+    },
+    {
+      label: "Skills",
+      onClick: () => (window.location.href = "/skills"),
+      icon: <SkillsIcon />,
+    },
+  ];
+
   // This effect runs once after the component mounts
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -211,7 +240,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App" style={{ padding: "20px", paddingLeft: "100px" }}>
-        <VerticalNavigation />
+        <VerticalNavigation items={navItems} />
         <Stack direction={"row"} marginBottom={2}>
           <Typography flexGrow={1} variant="h5" component="h1">
             Learning Experiences
