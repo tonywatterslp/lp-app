@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 
 import { VerticalNavigation, ThemeProvider } from "@learningpool/ui";
-import { Button, Stack, SvgIcon, Typography, createTheme } from "@mui/material";
+import {
+  Button,
+  Stack,
+  SvgIcon,
+  Typography,
+  createTheme,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "@mui/material";
 import CourseCreator from "./components/CourseCreator/CourseCreator";
 import CourseTable, { Course } from "./components/CourseTable/CourseTable";
 
@@ -18,6 +26,12 @@ import SupportIcon from "./assets/icons/SupportIcon.svg";
 import GoToLearnerDashboardIcon from "./assets/icons/GoToLearnerDashboardIcon.svg";
 import OrganisationListIcon from "./assets/icons/OrganisationListIcon.svg";
 import LogoutIcon from "./assets/icons/LogoutIcon.svg";
+import LearnerDashboardIcon from "./assets/icons/LearnerDashboardIcon.svg";
+import AdminDashboardIcon from "./assets/icons/AdminDashboardIcon.svg";
+import GoToAdminDashboardIcon from "./assets/icons/GoToAdminDashboardIcon.svg";
+import HomeIcon from "./assets/icons/HomeIcon.svg";
+import DiscoverIcon from "./assets/icons/DiscoverIcon.svg";
+import MyTeamSkillsIcon from "./assets/icons/MyTeamSkillsIcon.svg";
 
 const DEFAULT_HEADER_TYPOGRAPHY = {
   fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -203,8 +217,25 @@ function App() {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  // Menu items for vertical navigation with imported SVG icons
-  const navItems = [
+  // Determine the current view based on URL path
+  const isLearnerView =
+    window.location.pathname.includes("/learner-dashboard") ||
+    window.location.pathname.includes("/dashboard") ||
+    window.location.pathname.includes("/discover") ||
+    window.location.pathname.includes("/skills-builder") ||
+    window.location.pathname.includes("/team-skills");
+
+  // Admin menu items
+  const adminNavItems = [
+    {
+      label: "AdminDashboard",
+      onClick: () => (window.location.href = "/admin-dashboard"),
+      icon: (
+        <SvgIcon sx={{ width: 32, height: 32 }}>
+          <HomeIcon />
+        </SvgIcon>
+      ),
+    },
     {
       label: "Learning Experiences",
       onClick: () => (window.location.href = "/learning-experiences"),
@@ -270,7 +301,7 @@ function App() {
     },
   ];
 
-  const secondaryNavItems = [
+  const adminSecondaryNavItems = [
     {
       label: "Support",
       onClick: () => (window.location.href = "/support"),
@@ -313,10 +344,108 @@ function App() {
     },
   ];
 
+  // Learner menu items
+  const learnerNavItems = [
+    {
+      label: "Dashboard",
+      onClick: () => (window.location.href = "/dashboard"),
+      icon: (
+        <SvgIcon sx={{ width: 32, height: 32 }}>
+          <HomeIcon />
+        </SvgIcon>
+      ),
+    },
+    {
+      label: "Discover",
+      onClick: () => (window.location.href = "/discover"),
+      icon: (
+        <SvgIcon sx={{ width: 32, height: 32 }}>
+          <DiscoverIcon />
+        </SvgIcon>
+      ),
+    },
+    {
+      label: "Events",
+      onClick: () => (window.location.href = "/events"),
+      icon: (
+        <SvgIcon sx={{ width: 32, height: 32 }}>
+          <EventsIcon />
+        </SvgIcon>
+      ),
+    },
+    {
+      label: "Skills Builder",
+      onClick: () => (window.location.href = "/skills-builder"),
+      icon: (
+        <SvgIcon sx={{ width: 32, height: 32 }}>
+          <SkillsIcon />
+        </SvgIcon>
+      ),
+    },
+    {
+      label: "My Team Skills",
+      onClick: () => (window.location.href = "/team-skills"),
+      icon: (
+        <SvgIcon sx={{ width: 32, height: 32 }}>
+          <MyTeamSkillsIcon />
+        </SvgIcon>
+      ),
+    },
+  ];
+
+  const learnerSecondaryNavItems = [
+    {
+      label: "Support",
+      onClick: () => (window.location.href = "/support"),
+      icon: (
+        <SvgIcon sx={{ width: 32, height: 32 }}>
+          <SupportIcon />
+        </SvgIcon>
+      ),
+    },
+    {
+      label: "Admin",
+      onClick: () => (window.location.href = "/learning-experiences"),
+      icon: (
+        <SvgIcon sx={{ width: 32, height: 32 }}>
+          <GoToAdminDashboardIcon />
+        </SvgIcon>
+      ),
+    },
+    {
+      label: "Organisation List",
+      onClick: () => (window.location.href = "/organisation-list"),
+      icon: (
+        <SvgIcon sx={{ width: 32, height: 32 }}>
+          <OrganisationListIcon />
+        </SvgIcon>
+      ),
+    },
+    {
+      label: "Logout",
+      onClick: () => {
+        // Perform logout action here
+        console.log("Logging out...");
+        window.location.href = "/logout";
+      },
+      icon: (
+        <SvgIcon sx={{ width: 32, height: 32 }}>
+          <LogoutIcon />
+        </SvgIcon>
+      ),
+    },
+  ];
+
+  // Current navigation items based on active menu type
+  const navItems = isLearnerView ? learnerNavItems : adminNavItems;
+  const secondaryNavItems = isLearnerView
+    ? learnerSecondaryNavItems
+    : adminSecondaryNavItems;
+
   // This effect runs once after the component mounts
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      // Check if the pressed key is 'n'
+      // Check if the pressed key is 't'
       if (event.key === "t" && event.ctrlKey) {
         setIsOpen(true);
       }
@@ -340,7 +469,7 @@ function App() {
         />
         <Stack direction={"row"} marginBottom={2}>
           <Typography flexGrow={1} variant="h5" component="h1">
-            Learning Experiences
+            {isLearnerView ? "Learner Dashboard" : "Learning Experiences"}
           </Typography>
           <Stack
             direction={"row-reverse"}
@@ -348,26 +477,60 @@ function App() {
             flexGrow={1}
             spacing={1}
           >
-            <Button
-              variant="outlined"
-              onClick={() => {
-                setIsOpen(true);
+            {!isLearnerView && (
+              <>
+                <Button
+                  variant="outlined"
+                  onClick={() => {
+                    setIsOpen(true);
+                  }}
+                  aria-keyshortcuts="Control+T"
+                >
+                  New Learning Experience
+                </Button>
+                <Button
+                  variant="outlined"
+                  onClick={() => {
+                    setIsOpen(true);
+                  }}
+                >
+                  Create from Template
+                </Button>
+              </>
+            )}
+            <ToggleButtonGroup
+              value={isLearnerView ? "learner" : "admin"}
+              exclusive
+              onChange={(_, value) => {
+                if (value === "learner") {
+                  window.location.href = "/learner-dashboard";
+                } else if (value === "admin") {
+                  window.location.href = "/learning-experiences";
+                }
               }}
-              aria-keyshortcuts="Control+T"
+              aria-label="Navigation menu type"
+              size="small"
             >
-              New Learning Experience
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={() => {
-                setIsOpen(true);
-              }}
-            >
-              Create from Template
-            </Button>
+              <ToggleButton value="admin" aria-label="admin navigation">
+                Admin
+              </ToggleButton>
+              <ToggleButton value="learner" aria-label="learner navigation">
+                Learner
+              </ToggleButton>
+            </ToggleButtonGroup>
           </Stack>
         </Stack>
-        <CourseTable courses={courses} />
+        {!isLearnerView ? (
+          <CourseTable courses={courses} />
+        ) : (
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ mt: 4, textAlign: "center" }}
+          >
+            Welcome to the Learner Dashboard
+          </Typography>
+        )}
         <CourseCreator
           isOpen={isOpen}
           onCloseHandler={() => {

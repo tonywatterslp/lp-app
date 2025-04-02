@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="25px" height="25px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;">
-    <g id="Learning-Experience" serif:id="Learning Experience" transform="matrix(0.500065,0,0,0.500885,-48.9764,0)">
-        <rect x="98" y="0" width="48" height="48" style="fill:none;"/>
-        <g transform="matrix(0.379353,0,0,0.324404,122.518,19.4289)">
-            <path d="M50,-26.781C50,-34.077 44.926,-40 38.677,-40L-38.677,-40C-44.926,-40 -50,-34.077 -50,-26.781L-50,26.781C-50,34.077 -44.926,40 -38.677,40L38.677,40C44.926,40 50,34.077 50,26.781L50,-26.781Z" style="fill:none;stroke:black;stroke-width:8px;"/>
-        </g>
-        <g transform="matrix(0.324935,0,0,0.324404,122,19.4289)">
-            <path d="M-20,40L-30,70" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:8px;stroke-linecap:round;stroke-linejoin:miter;"/>
-        </g>
-        <g transform="matrix(0.324935,0,0,0.324404,122,19.4289)">
-            <path d="M20,40L30,70" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:8px;stroke-linecap:round;stroke-linejoin:miter;"/>
-        </g>
-        <g transform="matrix(0.999376,0,0,0.997741,56.3786,-0.446673)">
-            <path d="M71.039,30.441L76.543,30.441" style="fill:none;stroke:black;stroke-width:2.6px;stroke-linecap:round;stroke-miterlimit:1.5;"/>
+    <g transform="matrix(1,0,0,1,0,-32)">
+        <g id="Learning-Experience" serif:id="Learning Experience" transform="matrix(0.500065,0,0,0.500885,-48.8247,32.0165)">
+            <rect x="98" y="0" width="48" height="48" style="fill:none;"/>
+            <g transform="matrix(0.379353,0,0,0.324404,122.518,19.4289)">
+                <path d="M50,-26.781C50,-34.077 44.926,-40 38.677,-40L-38.677,-40C-44.926,-40 -50,-34.077 -50,-26.781L-50,26.781C-50,34.077 -44.926,40 -38.677,40L38.677,40C44.926,40 50,34.077 50,26.781L50,-26.781Z" style="fill:none;stroke:black;stroke-width:8px;"/>
+            </g>
+            <g transform="matrix(0.324935,0,0,0.324404,122,19.4289)">
+                <path d="M-20,40L-30,70" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:8px;stroke-linecap:round;stroke-linejoin:miter;"/>
+            </g>
+            <g transform="matrix(0.324935,0,0,0.324404,122,19.4289)">
+                <path d="M20,40L30,70" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:8px;stroke-linecap:round;stroke-linejoin:miter;"/>
+            </g>
+            <g transform="matrix(0.999376,0,0,0.997741,56.3786,-0.446673)">
+                <path d="M71.039,30.441L76.543,30.441" style="fill:none;stroke:black;stroke-width:2.6px;stroke-linecap:round;stroke-miterlimit:1.5;"/>
+            </g>
         </g>
     </g>
 </svg>
