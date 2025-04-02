@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="25px" height="25px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
+    <g transform="matrix(1,0,0,1,0,-59)">
+        <g id="Events" transform="matrix(0.500559,0,0,0.500867,-49.0249,59.9043)">
+            <rect x="98" y="0" width="48" height="48" style="fill:none;"/>
+            <g transform="matrix(0.354764,0,0,0.349289,122,25.385)">
+                <path d="M50,3.45C50,2.978 49.976,-27.295 49.93,-27.754C49.241,-34.628 43.514,-40 36.561,-40L-36.561,-40C-43.978,-40 -50,-33.887 -50,-26.358L-50,26.358C-50,33.887 -43.978,40 -36.561,40L6.241,40" style="fill:none;stroke:black;stroke-width:7.38px;"/>
+            </g>
+            <g transform="matrix(1.73901,0,0,1.73794,-43.5342,-43.6118)">
+                <path d="M84.989,35.959L105.389,35.959" style="fill:none;stroke:black;stroke-width:1.49px;stroke-miterlimit:1.5;"/>
+            </g>
+            <g transform="matrix(1.73901,0,0,1.73794,-43.5342,-43.6118)">
+                <path d="M90.519,29.512L90.519,33.754" style="fill:none;stroke:black;stroke-width:1.49px;stroke-miterlimit:1.5;"/>
+            </g>
+            <g transform="matrix(1.73901,0,0,1.73794,-26.7199,-43.5631)">
+                <path d="M90.519,29.512L90.519,33.754" style="fill:none;stroke:black;stroke-width:1.49px;stroke-miterlimit:1.5;"/>
+            </g>
+            <g transform="matrix(1.56513,0,0,1.56417,-27.0117,-37.5081)">
+                <circle cx="103.525" cy="47.449" r="5.201" style="fill:none;stroke:black;stroke-width:1.66px;stroke-miterlimit:1.5;"/>
+            </g>
+            <g transform="matrix(1.99777,0,0,1.99654,-68.165,-55.2632)">
+                <path d="M101.705,43.871L101.705,46.066L103.165,47.392" style="fill:none;stroke:black;stroke-width:1.3px;stroke-miterlimit:1.5;"/>
+            </g>
+        </g>
+    </g>
+</svg>

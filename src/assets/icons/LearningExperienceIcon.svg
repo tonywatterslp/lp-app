@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="49px" height="48px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;">
+    <g transform="matrix(1,0,0,1,-56,0)">
+        <g id="Learning-Experience" serif:id="Learning Experience" transform="matrix(1,0,0,1,-41.2071,0)">
+            <rect x="98" y="0" width="48" height="48" style="fill:none;"/>
+            <clipPath id="_clip1">
+                <rect x="98" y="0" width="48" height="48"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(0.325138,0,0,0.325138,122,21.4244)">
+                    <path d="M50,-33.394C50,-37.04 47.04,-40 43.394,-40L-43.394,-40C-47.04,-40 -50,-37.04 -50,-33.394L-50,33.394C-50,37.04 -47.04,40 -43.394,40L43.394,40C47.04,40 50,37.04 50,33.394L50,-33.394Z" style="fill:none;stroke:black;stroke-width:8px;"/>
+                </g>
+                <g transform="matrix(0.325138,0,0,0.325138,122,21.4244)">
+                    <path d="M-20,40L-30,70" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:8px;stroke-linecap:round;stroke-linejoin:miter;"/>
+                </g>
+                <g transform="matrix(0.325138,0,0,0.325138,122,21.4244)">
+                    <path d="M20,40L30,70" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:8px;stroke-linecap:round;stroke-linejoin:miter;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,57.9634,1.5119)">
+                    <path d="M71.039,30.441L76.543,30.441" style="fill:none;stroke:black;stroke-width:2.4px;stroke-linecap:round;stroke-miterlimit:1.5;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
