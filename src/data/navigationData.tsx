@@ -210,8 +210,6 @@ export const learnerNavItems = [
         <HomeIcon />
       </SvgIcon>
     ),
-    backgroundColor: "#1976d2", // You can change this to any color you prefer
-    color: "#ffffff", // Text color to contrast with background
   },
   {
     label: "Discover",

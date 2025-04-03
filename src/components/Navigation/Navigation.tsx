@@ -25,13 +25,24 @@ const Navigation: React.FC<NavigationProps> = ({
   const navigate = useNavigate();
 
   // Convert items to format expected by VerticalNavigation
-  const formattedNavItems = navItems.map((item) => ({
-    label: item.label,
-    onClick: () => navigate(item.path),
-    icon: item.icon,
-    backgroundColor: item.backgroundColor,
-    color: item.color,
-  }));
+  const formattedNavItems = navItems.map((item) => {
+    // Instead of passing backgroundColor directly, use sx prop for styling
+    const itemProps: any = {
+      label: item.label,
+      onClick: () => navigate(item.path),
+      icon: item.icon,
+    };
+
+    // Only add sx prop when backgroundColor or color are provided
+    if (item.backgroundColor || item.color) {
+      itemProps.sx = {
+        backgroundColor: item.backgroundColor,
+        color: item.color,
+      };
+    }
+
+    return itemProps;
+  });
 
   const formattedSecondaryNavItems = secondaryNavItems.map((item) => ({
     label: item.label,
