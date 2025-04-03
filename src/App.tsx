@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { VerticalNavigation, ThemeProvider } from "@learningpool/ui";
+import { VerticalNavigation } from "@learningpool/ui";
 import {
   Button,
   Stack,
   SvgIcon,
   Typography,
   createTheme,
+  ThemeProvider,
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
@@ -26,8 +27,6 @@ import SupportIcon from "./assets/icons/SupportIcon.svg";
 import GoToLearnerDashboardIcon from "./assets/icons/GoToLearnerDashboardIcon.svg";
 import OrganisationListIcon from "./assets/icons/OrganisationListIcon.svg";
 import LogoutIcon from "./assets/icons/LogoutIcon.svg";
-import LearnerDashboardIcon from "./assets/icons/LearnerDashboardIcon.svg";
-import AdminDashboardIcon from "./assets/icons/AdminDashboardIcon.svg";
 import GoToAdminDashboardIcon from "./assets/icons/GoToAdminDashboardIcon.svg";
 import HomeIcon from "./assets/icons/HomeIcon.svg";
 import DiscoverIcon from "./assets/icons/DiscoverIcon.svg";
@@ -73,6 +72,8 @@ export const defaultTheme = {
   //   }
   // }
 };
+
+const ICON_SIZE = 28; // Define a constant for the icon size
 
 const courses: Course[] = [
   {
@@ -214,6 +215,19 @@ const courses: Course[] = [
 
 function App() {
   const theme = createTheme(defaultTheme);
+  // Create a separate theme for the navigation component with the paper color explicitly set
+  const navigationTheme = createTheme({
+    palette: {
+      primary: {
+        main: "#1976d2",
+        contrastText: "#ffffff",
+      },
+      background: {
+        paper: "#1976d2", // This overrides the background color
+        default: "#1976d2",
+      },
+    },
+  });
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -231,7 +245,12 @@ function App() {
       label: "AdminDashboard",
       onClick: () => (window.location.href = "/admin-dashboard"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <HomeIcon />
         </SvgIcon>
       ),
@@ -240,7 +259,12 @@ function App() {
       label: "Learning Experiences",
       onClick: () => (window.location.href = "/learning-experiences"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <LearningExperiencesIcon />
         </SvgIcon>
       ),
@@ -249,7 +273,12 @@ function App() {
       label: "Resources",
       onClick: () => (window.location.href = "/resources"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <ResourcesIcon />
         </SvgIcon>
       ),
@@ -258,7 +287,12 @@ function App() {
       label: "Events",
       onClick: () => (window.location.href = "/events"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <EventsIcon />
         </SvgIcon>
       ),
@@ -267,7 +301,12 @@ function App() {
       label: "Playlists",
       onClick: () => (window.location.href = "/playlists"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <PlaylistsIcon />
         </SvgIcon>
       ),
@@ -276,7 +315,12 @@ function App() {
       label: "Users",
       onClick: () => (window.location.href = "/users"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <UsersIcon />
         </SvgIcon>
       ),
@@ -285,7 +329,12 @@ function App() {
       label: "Groups",
       onClick: () => (window.location.href = "/groups"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <GroupsIcon />
         </SvgIcon>
       ),
@@ -294,7 +343,12 @@ function App() {
       label: "Settings",
       onClick: () => (window.location.href = "/settings"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <SettingsIcon />
         </SvgIcon>
       ),
@@ -306,7 +360,12 @@ function App() {
       label: "Support",
       onClick: () => (window.location.href = "/support"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <SupportIcon />
         </SvgIcon>
       ),
@@ -315,7 +374,12 @@ function App() {
       label: "Learner Dashboard",
       onClick: () => (window.location.href = "/learner-dashboard"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <GoToLearnerDashboardIcon />
         </SvgIcon>
       ),
@@ -324,7 +388,12 @@ function App() {
       label: "Organisation List",
       onClick: () => (window.location.href = "/organisation-list"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <OrganisationListIcon />
         </SvgIcon>
       ),
@@ -337,7 +406,12 @@ function App() {
         window.location.href = "/logout";
       },
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <LogoutIcon />
         </SvgIcon>
       ),
@@ -350,16 +424,28 @@ function App() {
       label: "Dashboard",
       onClick: () => (window.location.href = "/dashboard"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <HomeIcon />
         </SvgIcon>
       ),
+      backgroundColor: "#1976d2", // You can change this to any color you prefer
+      color: "#ffffff", // Text color to contrast with background
     },
     {
       label: "Discover",
       onClick: () => (window.location.href = "/discover"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <DiscoverIcon />
         </SvgIcon>
       ),
@@ -368,7 +454,12 @@ function App() {
       label: "Events",
       onClick: () => (window.location.href = "/events"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <EventsIcon />
         </SvgIcon>
       ),
@@ -377,7 +468,12 @@ function App() {
       label: "Skills Builder",
       onClick: () => (window.location.href = "/skills-builder"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <SkillsIcon />
         </SvgIcon>
       ),
@@ -386,7 +482,12 @@ function App() {
       label: "My Team Skills",
       onClick: () => (window.location.href = "/team-skills"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <MyTeamSkillsIcon />
         </SvgIcon>
       ),
@@ -398,7 +499,12 @@ function App() {
       label: "Support",
       onClick: () => (window.location.href = "/support"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <SupportIcon />
         </SvgIcon>
       ),
@@ -407,7 +513,12 @@ function App() {
       label: "Admin",
       onClick: () => (window.location.href = "/learning-experiences"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <GoToAdminDashboardIcon />
         </SvgIcon>
       ),
@@ -416,7 +527,12 @@ function App() {
       label: "Organisation List",
       onClick: () => (window.location.href = "/organisation-list"),
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <OrganisationListIcon />
         </SvgIcon>
       ),
@@ -429,7 +545,12 @@ function App() {
         window.location.href = "/logout";
       },
       icon: (
-        <SvgIcon sx={{ width: 32, height: 32 }}>
+        <SvgIcon
+          sx={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+          }}
+        >
           <LogoutIcon />
         </SvgIcon>
       ),
@@ -463,10 +584,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App" style={{ padding: "20px", paddingLeft: "100px" }}>
-        <VerticalNavigation
-          items={navItems}
-          secondaryItems={secondaryNavItems}
-        />
+        <ThemeProvider theme={navigationTheme}>
+          <VerticalNavigation
+            items={navItems}
+            secondaryItems={secondaryNavItems}
+            hasStreamHome={true}
+          />
+        </ThemeProvider>
         <Stack direction={"row"} marginBottom={2}>
           <Typography flexGrow={1} variant="h5" component="h1">
             {isLearnerView ? "Learner Dashboard" : "Learning Experiences"}
@@ -485,6 +609,11 @@ function App() {
                     setIsOpen(true);
                   }}
                   aria-keyshortcuts="Control+T"
+                  startIcon={
+                    <SvgIcon>
+                      <LearningExperiencesIcon />
+                    </SvgIcon>
+                  }
                 >
                   New Learning Experience
                 </Button>

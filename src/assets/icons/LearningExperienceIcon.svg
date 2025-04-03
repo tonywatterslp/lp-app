@@ -9,16 +9,16 @@
             </clipPath>
             <g clip-path="url(#_clip1)">
                 <g transform="matrix(0.325138,0,0,0.325138,122,21.4244)">
-                    <path d="M50,-33.394C50,-37.04 47.04,-40 43.394,-40L-43.394,-40C-47.04,-40 -50,-37.04 -50,-33.394L-50,33.394C-50,37.04 -47.04,40 -43.394,40L43.394,40C47.04,40 50,37.04 50,33.394L50,-33.394Z" style="fill:none;stroke:black;stroke-width:8px;"/>
+                    <path d="M50,-33.394C50,-37.04 47.04,-40 43.394,-40L-43.394,-40C-47.04,-40 -50,-37.04 -50,-33.394L-50,33.394C-50,37.04 -47.04,40 -43.394,40L43.394,40C47.04,40 50,37.04 50,33.394L50,-33.394Z" style="fill:none;stroke: currentColor;stroke-width:8px;"/>
                 </g>
                 <g transform="matrix(0.325138,0,0,0.325138,122,21.4244)">
-                    <path d="M-20,40L-30,70" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:8px;stroke-linecap:round;stroke-linejoin:miter;"/>
+                    <path d="M-20,40L-30,70" style="fill:none;fill-rule:nonzero;stroke: currentColor;stroke-width:8px;stroke-linecap:round;stroke-linejoin:miter;"/>
                 </g>
                 <g transform="matrix(0.325138,0,0,0.325138,122,21.4244)">
-                    <path d="M20,40L30,70" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:8px;stroke-linecap:round;stroke-linejoin:miter;"/>
+                    <path d="M20,40L30,70" style="fill:none;fill-rule:nonzero;stroke: currentColor;stroke-width:8px;stroke-linecap:round;stroke-linejoin:miter;"/>
                 </g>
                 <g transform="matrix(1,0,0,1,57.9634,1.5119)">
-                    <path d="M71.039,30.441L76.543,30.441" style="fill:none;stroke:black;stroke-width:2.4px;stroke-linecap:round;stroke-miterlimit:1.5;"/>
+                    <path d="M71.039,30.441L76.543,30.441" style="fill:none;stroke: currentColor;stroke-width:2.4px;stroke-linecap:round;stroke-miterlimit:1.5;"/>
                 </g>
             </g>
         </g>
