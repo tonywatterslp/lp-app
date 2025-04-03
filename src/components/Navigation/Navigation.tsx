@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { VerticalNavigation } from "@learningpool/ui";
 import { ThemeProvider } from "@mui/material";
@@ -23,6 +23,15 @@ const Navigation: React.FC<NavigationProps> = ({
   secondaryNavItems,
 }) => {
   const navigate = useNavigate();
+
+  // Generate a unique key based on navigation items to force remounting
+  const navigationKey = useMemo(() => {
+    const navItemsString = navItems.map((item) => item.label).join("-");
+    const secondaryNavItemsString = secondaryNavItems
+      .map((item) => item.label)
+      .join("-");
+    return `nav-${navItemsString}-${secondaryNavItemsString}`;
+  }, [navItems, secondaryNavItems]);
 
   // Convert items to format expected by VerticalNavigation
   const formattedNavItems = navItems.map((item) => {
@@ -65,6 +74,7 @@ const Navigation: React.FC<NavigationProps> = ({
   return (
     <ThemeProvider theme={navigationTheme}>
       <VerticalNavigationComponent
+        key={navigationKey}
         items={formattedNavItems}
         secondaryItems={formattedSecondaryNavItems}
         hasStreamHome={true}
