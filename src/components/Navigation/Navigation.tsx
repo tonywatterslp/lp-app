@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { VerticalNavigation } from "@learningpool/ui";
 import { ThemeProvider } from "@mui/material";
-import { navigationTheme } from "../../theme/theme";
+import { useNavigationThemeContext } from "../../context/ThemeContext";
 
 // Define the interface for navigation items
 export interface NavigationItem {
@@ -23,6 +23,7 @@ const Navigation: React.FC<NavigationProps> = ({
   secondaryNavItems,
 }) => {
   const navigate = useNavigate();
+  const { navTheme } = useNavigationThemeContext();
 
   // Generate a unique key based on navigation items to force remounting
   const navigationKey = useMemo(() => {
@@ -72,7 +73,7 @@ const Navigation: React.FC<NavigationProps> = ({
   const VerticalNavigationComponent = VerticalNavigation as any;
 
   return (
-    <ThemeProvider theme={navigationTheme}>
+    <ThemeProvider theme={navTheme}>
       <VerticalNavigationComponent
         key={navigationKey}
         items={formattedNavItems}
