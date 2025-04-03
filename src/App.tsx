@@ -28,8 +28,8 @@ function App() {
     },
     {
       key: "c",
-      ctrlKey: true, 
-      handler: () => setShowColorPicker(prev => !prev),
+      ctrlKey: true,
+      handler: () => setShowColorPicker((prev) => !prev),
     },
   ]);
 
@@ -39,19 +39,24 @@ function App() {
         <Router>
           <Layout>
             {showColorPicker && (
-              <div style={{
-                position: 'fixed',
-                top: '70px',
-                right: '20px',
-                zIndex: 1000,
-              }}>
+              <div
+                style={{
+                  position: "fixed",
+                  top: "70px",
+                  right: "20px",
+                  zIndex: 1000,
+                }}
+              >
                 <ColorPicker />
               </div>
             )}
             <Routes>
               {/* Admin routes */}
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
-              <Route path="/learning-experiences" element={<AdminDashboard />} />
+              <Route
+                path="/learning-experiences"
+                element={<AdminDashboard />}
+              />
               <Route path="/resources" element={<div>Resources Page</div>} />
               <Route path="/events" element={<div>Events Page</div>} />
               <Route path="/playlists" element={<div>Playlists Page</div>} />
@@ -67,7 +72,10 @@ function App() {
                 path="/skills-builder"
                 element={<div>Skills Builder Page</div>}
               />
-              <Route path="/team-skills" element={<div>Team Skills Page</div>} />
+              <Route
+                path="/team-skills"
+                element={<div>Team Skills Page</div>}
+              />
 
               {/* Shared routes */}
               <Route path="/support" element={<div>Support Page</div>} />
