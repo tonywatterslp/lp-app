@@ -13,6 +13,9 @@ import {
   Typography,
   Avatar,
   Tooltip,
+  Menu,
+  MenuItem,
+  Popover,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -20,6 +23,11 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import AppsIcon from "@mui/icons-material/Apps";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import PersonIcon from "@mui/icons-material/Person";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
+import DescriptionIcon from "@mui/icons-material/Description";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 interface CompactLayoutNavigationProps {
   // Main navigation items for the middle section
@@ -39,10 +47,32 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
   avatarUrl,
 }) => {
   const [open, setOpen] = useState(true);
+  const [avatarMenuAnchorEl, setAvatarMenuAnchorEl] =
+    useState<HTMLElement | null>(null);
+  const isAvatarMenuOpen = Boolean(avatarMenuAnchorEl);
 
   const handleDrawerToggle = () => {
     setOpen(!open);
   };
+
+  const handleAvatarMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAvatarMenuAnchorEl(event.currentTarget);
+  };
+
+  const handleAvatarMenuClose = () => {
+    setAvatarMenuAnchorEl(null);
+  };
+
+  const avatarMenuItems = [
+    { label: "My Profile", icon: <PersonIcon fontSize="small" /> },
+    { label: "My Reports", icon: <AssessmentIcon fontSize="small" /> },
+    { label: "My Playlists", icon: <PlaylistPlayIcon fontSize="small" /> },
+    {
+      label: "Terms and Conditions",
+      icon: <DescriptionIcon fontSize="small" />,
+    },
+    { label: "Logout", icon: <LogoutIcon fontSize="small" /> },
+  ];
 
   return (
     <Box
@@ -247,6 +277,7 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
               }}
+              onClick={handleAvatarMenuOpen}
             >
               <ListItemIcon
                 sx={{
@@ -265,6 +296,38 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
             </ListItemButton>
           </ListItem>
         </Box>
+
+        {/* Avatar Menu Popover */}
+        <Menu
+          anchorEl={avatarMenuAnchorEl}
+          open={isAvatarMenuOpen}
+          onClose={handleAvatarMenuClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: open ? "right" : "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: open ? "right" : "center",
+          }}
+          PaperProps={{
+            sx: {
+              mt: 0.5,
+              width: 220,
+            },
+          }}
+        >
+          {avatarMenuItems.map((item, index) => (
+            <MenuItem
+              key={index}
+              onClick={handleAvatarMenuClose}
+              sx={{ py: 1 }}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.label} />
+            </MenuItem>
+          ))}
+        </Menu>
 
         <Divider />
 

@@ -17,6 +17,7 @@ import GoToAdminDashboardIcon from "../assets/icons/GoToAdminDashboardIcon.svg";
 import HomeIcon from "../assets/icons/HomeIcon.svg";
 import DiscoverIcon from "../assets/icons/DiscoverIcon.svg";
 import MyTeamSkillsIcon from "../assets/icons/MyTeamSkillsIcon.svg";
+import ToolsIcon from "../assets/icons/ToolsIcon.svg";
 
 const ICON_SIZE = 28; // Define a constant for the icon size
 
@@ -131,6 +132,20 @@ export const adminNavItems = [
         }}
       >
         <SettingsIcon />
+      </SvgIcon>
+    ),
+  },
+  {
+    label: "Tools",
+    path: "/tools",
+    icon: (
+      <SvgIcon
+        sx={{
+          width: ICON_SIZE,
+          height: ICON_SIZE,
+        }}
+      >
+        <ToolsIcon />
       </SvgIcon>
     ),
   },

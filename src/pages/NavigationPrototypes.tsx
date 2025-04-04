@@ -244,18 +244,34 @@ const NavigationPrototypes = () => {
                 items={
                   dataSet === "learner"
                     ? [
-                        { label: "Home", icon: navItems[0].icon },
-                        { label: "Discover", icon: navItems[1].icon },
-                        { label: "Events", icon: navItems[2].icon },
-                        { label: "Skills Builder", icon: navItems[3].icon },
-                        { label: "My Team Skills", icon: navItems[4].icon },
+                        { label: "Home", icon: learnerNavItems[0].icon },
+                        { label: "Discover", icon: learnerNavItems[1].icon },
+                        { label: "Events", icon: learnerNavItems[2].icon },
+                        {
+                          label: "Skills Builder",
+                          icon: learnerNavItems[3].icon,
+                        },
+                        {
+                          label: "My Team Skills",
+                          icon: learnerNavItems[4].icon,
+                        },
                       ]
                     : [
-                        { label: "Home", icon: navItems[0].icon },
-                        { label: "Discover", icon: navItems[1].icon },
-                        { label: "Events", icon: navItems[2].icon },
-                        { label: "Skills Builder", icon: navItems[3].icon },
-                        { label: "My Team Skills", icon: navItems[4].icon },
+                        {
+                          label: "Admin Dashboard",
+                          icon: adminNavItems[0].icon,
+                        },
+                        {
+                          label: "Learning Experiences",
+                          icon: adminNavItems[1].icon,
+                        },
+                        { label: "Resources", icon: adminNavItems[2].icon },
+                        { label: "Events", icon: adminNavItems[3].icon },
+                        { label: "Playlists", icon: adminNavItems[4].icon },
+                        { label: "Users", icon: adminNavItems[5].icon },
+                        { label: "Groups", icon: adminNavItems[6].icon },
+                        { label: "Settings", icon: adminNavItems[7].icon },
+                        { label: "Tools", icon: adminNavItems[8].icon }, // Using adminDashboard icon as placeholder for Tools
                       ]
                 }
                 notificationCount={displayedNotificationCount}
