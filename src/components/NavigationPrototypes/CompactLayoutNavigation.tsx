@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Drawer,
   List,
@@ -28,6 +28,7 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LogoutIcon from "@mui/icons-material/Logout";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 interface CompactLayoutNavigationProps {
   // Main navigation items for the middle section
@@ -49,7 +50,52 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
   const [open, setOpen] = useState(true);
   const [avatarMenuAnchorEl, setAvatarMenuAnchorEl] =
     useState<HTMLElement | null>(null);
+  const [ellipsisMenuAnchorEl, setEllipsisMenuAnchorEl] =
+    useState<HTMLElement | null>(null);
   const isAvatarMenuOpen = Boolean(avatarMenuAnchorEl);
+  const isEllipsisMenuOpen = Boolean(ellipsisMenuAnchorEl);
+
+  // For measuring available space
+  const listRef = useRef<HTMLDivElement>(null);
+  const [visibleItems, setVisibleItems] = useState<typeof items>([]);
+  const [hiddenItems, setHiddenItems] = useState<typeof items>([]);
+
+  // Handle window resize and calculate visible items
+  useEffect(() => {
+    const calculateVisibleItems = () => {
+      if (!listRef.current || items.length === 0) {
+        setVisibleItems(items);
+        setHiddenItems([]);
+        return;
+      }
+
+      const listHeight = listRef.current.clientHeight;
+      // Each item takes approximately 48px height
+      const itemHeight = 48;
+      // Reserve space for the ellipsis button (if needed)
+      const ellipsisHeight = 48;
+      // Calculate how many items can fit (minus space for ellipsis if needed)
+      const maxItems = Math.floor(listHeight / itemHeight);
+
+      if (items.length <= maxItems) {
+        // All items fit
+        setVisibleItems(items);
+        setHiddenItems([]);
+      } else {
+        // Not all items fit, we need the ellipsis
+        const visibleCount = maxItems - 1; // Reserve space for ellipsis button
+        setVisibleItems(items.slice(0, visibleCount));
+        setHiddenItems(items.slice(visibleCount));
+      }
+    };
+
+    // Calculate on mount and when drawer opens/closes or items change
+    calculateVisibleItems();
+
+    // Recalculate on window resize
+    window.addEventListener("resize", calculateVisibleItems);
+    return () => window.removeEventListener("resize", calculateVisibleItems);
+  }, [items, open]);
 
   const handleDrawerToggle = () => {
     setOpen(!open);
@@ -61,6 +107,14 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
 
   const handleAvatarMenuClose = () => {
     setAvatarMenuAnchorEl(null);
+  };
+
+  const handleEllipsisMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setEllipsisMenuAnchorEl(event.currentTarget);
+  };
+
+  const handleEllipsisMenuClose = () => {
+    setEllipsisMenuAnchorEl(null);
   };
 
   const avatarMenuItems = [
@@ -158,8 +212,18 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
         <Divider />
 
         {/* Main Navigation Items */}
-        <List sx={{ flex: "1 0 auto", py: 0 }}>
-          {items.map((item, index) => (
+        <List
+          ref={listRef}
+          sx={{
+            flex: "1 0 auto",
+            py: 0,
+            display: "flex",
+            flexDirection: "column",
+            overflowY: "auto",
+          }}
+        >
+          {/* Visible navigation items */}
+          {visibleItems.map((item, index) => (
             <ListItem key={index} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
@@ -181,6 +245,63 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
               </ListItemButton>
             </ListItem>
           ))}
+
+          {/* Ellipsis menu for overflow items */}
+          {hiddenItems.length > 0 && (
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                onClick={handleEllipsisMenuOpen}
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 2 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  <MoreVertIcon />
+                </ListItemIcon>
+                {open && <ListItemText primary="More" />}
+              </ListItemButton>
+            </ListItem>
+          )}
+
+          {/* Ellipsis Menu */}
+          <Menu
+            anchorEl={ellipsisMenuAnchorEl}
+            open={isEllipsisMenuOpen}
+            onClose={handleEllipsisMenuClose}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: open ? "right" : "center",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: open ? "left" : "center",
+            }}
+            PaperProps={{
+              sx: {
+                mt: 0.5,
+                width: 220,
+              },
+            }}
+          >
+            {hiddenItems.map((item, index) => (
+              <MenuItem
+                key={index}
+                onClick={handleEllipsisMenuClose}
+                sx={{ py: 1 }}
+              >
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.label} />
+              </MenuItem>
+            ))}
+          </Menu>
         </List>
 
         <Divider />
