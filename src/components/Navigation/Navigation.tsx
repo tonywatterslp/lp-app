@@ -9,8 +9,6 @@ export interface NavigationItem {
   label: string;
   path: string;
   icon: React.ReactNode;
-  backgroundColor?: string;
-  color?: string;
 }
 
 interface NavigationProps {
@@ -42,14 +40,6 @@ const Navigation: React.FC<NavigationProps> = ({
       onClick: () => navigate(item.path),
       icon: item.icon,
     };
-
-    // Only add sx prop when backgroundColor or color are provided
-    if (item.backgroundColor || item.color) {
-      itemProps.sx = {
-        backgroundColor: item.backgroundColor,
-        color: item.color,
-      };
-    }
 
     return itemProps;
   });
