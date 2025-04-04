@@ -10,6 +10,7 @@ import { defaultTheme } from "./theme/theme";
 import Layout from "./components/Layout/Layout";
 import AdminDashboard from "./pages/AdminDashboard";
 import LearnerDashboard from "./pages/LearnerDashboard";
+import NavigationPrototypes from "./pages/NavigationPrototypes";
 import useKeyboardShortcut from "./hooks/useKeyboardShortcut";
 import CourseCreator from "./components/CourseCreator/CourseCreator";
 import { NavigationThemeProvider } from "./context/ThemeContext";
@@ -51,6 +52,12 @@ function App() {
               </div>
             )}
             <Routes>
+              {/* Navigation Prototypes */}
+              <Route
+                path="/navigation-prototypes"
+                element={<NavigationPrototypes />}
+              />
+
               {/* Admin routes */}
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
               <Route
