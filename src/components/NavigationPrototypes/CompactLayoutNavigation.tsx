@@ -183,10 +183,17 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
           </Box>
         </Box>
 
-        <Divider />
-
-        {/* Search Section */}
-        <Box sx={{ p: 1 }}>
+        {/* Main Navigation Items */}
+        <List
+          ref={listRef}
+          sx={{
+            flex: "1 0 auto",
+            py: 0,
+            display: "flex",
+            flexDirection: "column",
+            overflowY: "auto",
+          }}
+        >
           <ListItem disablePadding>
             <ListItemButton
               sx={{
@@ -207,21 +214,6 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
               {open && <ListItemText primary="Search" />}
             </ListItemButton>
           </ListItem>
-        </Box>
-
-        <Divider />
-
-        {/* Main Navigation Items */}
-        <List
-          ref={listRef}
-          sx={{
-            flex: "1 0 auto",
-            py: 0,
-            display: "flex",
-            flexDirection: "column",
-            overflowY: "auto",
-          }}
-        >
           {/* Visible navigation items */}
           {visibleItems.map((item, index) => (
             <ListItem key={index} disablePadding sx={{ display: "block" }}>
@@ -304,8 +296,6 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
           </Menu>
         </List>
 
-        <Divider />
-
         {/* App Switcher */}
         <Box sx={{ p: 1 }}>
           <ListItem disablePadding>
@@ -329,8 +319,6 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
             </ListItemButton>
           </ListItem>
         </Box>
-
-        <Divider />
 
         {/* Support */}
         <Box sx={{ p: 1 }}>
@@ -361,8 +349,6 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
             </ListItemButton>
           </ListItem>
         </Box>
-
-        <Divider />
 
         {/* Notifications & Avatar Menu */}
         <Box sx={{ py: 1 }}>
@@ -449,8 +435,6 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
             </MenuItem>
           ))}
         </Menu>
-
-        <Divider />
 
         {/* Collapse/Expand Button */}
         <Box
