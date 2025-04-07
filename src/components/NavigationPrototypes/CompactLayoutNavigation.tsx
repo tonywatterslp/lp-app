@@ -62,6 +62,29 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
   const isAvatarMenuOpen = Boolean(avatarMenuAnchorEl);
   const isEllipsisMenuOpen = Boolean(ellipsisMenuAnchorEl);
 
+  // Add state for the Support submenu
+  const [supportMenuAnchorEl, setSupportMenuAnchorEl] =
+    useState<HTMLElement | null>(null);
+  const isSupportMenuOpen = Boolean(supportMenuAnchorEl);
+
+  const handleSupportMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setSupportMenuAnchorEl(event.currentTarget);
+  };
+
+  const handleSupportMenuClose = () => {
+    setSupportMenuAnchorEl(null);
+  };
+
+  // Support submenu items
+  const supportMenuItems = [
+    { label: "Help Centre", onClick: () => console.log("Help Centre clicked") },
+    {
+      label: "Submit Feedback",
+      onClick: () => console.log("Submit Feedback clicked"),
+    },
+    { label: "Contact Us", onClick: () => console.log("Contact Us clicked") },
+  ];
+
   // For measuring available space
   const listRef = useRef<HTMLUListElement>(null);
   const [visibleItems, setVisibleItems] = useState<typeof items>([]);
@@ -314,6 +337,7 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
               justifyContent: open ? "initial" : "center",
               px: 2.5,
             }}
+            onClick={handleSupportMenuOpen}
           >
             <ListItemIcon
               sx={{
@@ -329,6 +353,33 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
             {open && <ListItemText primary="Support" />}
           </ListItemButton>
         </ListItem>
+
+        {/* Support submenu */}
+        <Menu
+          anchorEl={supportMenuAnchorEl}
+          open={isSupportMenuOpen}
+          onClose={handleSupportMenuClose}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: isRtl ? "left" : "right",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: isRtl ? "right" : "left",
+          }}
+          PaperProps={{
+            sx: {
+              mt: 0.5,
+              width: 220,
+            },
+          }}
+        >
+          {supportMenuItems.map((item, index) => (
+            <MenuItem key={index} onClick={item.onClick} sx={{ py: 1 }}>
+              <ListItemText primary={item.label} />
+            </MenuItem>
+          ))}
+        </Menu>
 
         {/* Notifications & Avatar Menu */}
 
