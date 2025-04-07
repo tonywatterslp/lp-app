@@ -60,7 +60,7 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
   const isEllipsisMenuOpen = Boolean(ellipsisMenuAnchorEl);
 
   // For measuring available space
-  const listRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
   const [visibleItems, setVisibleItems] = useState<typeof items>([]);
   const [hiddenItems, setHiddenItems] = useState<typeof items>([]);
 
@@ -76,8 +76,7 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
       const listHeight = listRef.current.clientHeight;
       // Each item takes approximately 48px height
       const itemHeight = 48;
-      // Reserve space for the ellipsis button (if needed)
-      const ellipsisHeight = 48;
+
       // Calculate how many items can fit (minus space for ellipsis if needed)
       const maxItems = Math.floor(listHeight / itemHeight);
 
@@ -198,26 +197,6 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
             overflowY: "auto",
           }}
         >
-          {/* <ListItem disablePadding>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 2 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                <SearchIcon />
-              </ListItemIcon>
-              {open && <ListItemText primary="Search" />}
-            </ListItemButton>
-          </ListItem> */}
           {/* Visible navigation items */}
           {visibleItems.map((item, index) => (
             <ListItem key={index} disablePadding sx={{ display: "block" }}>

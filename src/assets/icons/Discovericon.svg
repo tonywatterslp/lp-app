@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="25px" height="25px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-    <g transform="matrix(1,0,0,1,-180,-36)">
-        <g id="Discover" transform="matrix(0.499898,0,0,0.5,180.921,36.4073)">
+<svg width="24px" height="24px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-181,-36)">
+        <g id="Discover" transform="matrix(0.499898,0,0,0.5,180.828,35.8271)">
             <rect x="0" y="0" width="48" height="48" style="fill:none;"/>
             <g transform="matrix(0.182459,-0.178995,0.182459,0.178995,33.7793,46.9463)">
                 <path d="M36.087,32.004L36.049,11.669L36.138,2.327" style="fill:none;stroke: currentColor;stroke-width:10.08px;"/>
