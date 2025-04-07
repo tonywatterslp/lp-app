@@ -18,6 +18,7 @@ import {
   Popover,
   SvgIcon,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 // import SearchIcon from "@mui/icons-material/Search";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -51,6 +52,8 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
   notificationCount = 0,
   avatarUrl,
 }) => {
+  const theme = useTheme();
+  const isRtl = theme.direction === "rtl";
   const [open, setOpen] = useState(true);
   const [avatarMenuAnchorEl, setAvatarMenuAnchorEl] =
     useState<HTMLElement | null>(null);
@@ -253,11 +256,11 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
             onClose={handleEllipsisMenuClose}
             anchorOrigin={{
               vertical: "top",
-              horizontal: open ? "right" : "center",
+              horizontal: isRtl ? "left" : "right",
             }}
             transformOrigin={{
               vertical: "top",
-              horizontal: open ? "left" : "center",
+              horizontal: isRtl ? "right" : "left",
             }}
             PaperProps={{
               sx: {
@@ -390,12 +393,12 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
           open={isAvatarMenuOpen}
           onClose={handleAvatarMenuClose}
           anchorOrigin={{
-            vertical: "bottom",
-            horizontal: open ? "right" : "center",
+            vertical: "top",
+            horizontal: isRtl ? "left" : "right",
           }}
           transformOrigin={{
             vertical: "top",
-            horizontal: open ? "right" : "center",
+            horizontal: isRtl ? "right" : "left",
           }}
           PaperProps={{
             sx: {
