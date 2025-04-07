@@ -16,9 +16,9 @@ import {
   Menu,
   MenuItem,
   Popover,
+  SvgIcon,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+// import SearchIcon from "@mui/icons-material/Search";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import AppsIcon from "@mui/icons-material/Apps";
@@ -29,12 +29,16 @@ import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import SupportIcon from "../../assets/icons/SupportIcon.svg";
+import NotificationsIcon from "../../assets/icons/NotificationsIcon.svg";
+import AvatarIcon from "../../assets/icons/AvatarIcon.svg";
 
 interface CompactLayoutNavigationProps {
   // Main navigation items for the middle section
   items?: Array<{
     label: string;
     icon: React.ReactNode;
+    path: string;
   }>;
   // Optional notification count
   notificationCount?: number;
@@ -194,7 +198,7 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
             overflowY: "auto",
           }}
         >
-          <ListItem disablePadding>
+          {/* <ListItem disablePadding>
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -213,7 +217,7 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
               </ListItemIcon>
               {open && <ListItemText primary="Search" />}
             </ListItemButton>
-          </ListItem>
+          </ListItem> */}
           {/* Visible navigation items */}
           {visibleItems.map((item, index) => (
             <ListItem key={index} disablePadding sx={{ display: "block" }}>
@@ -297,112 +301,109 @@ const CompactLayoutNavigation: React.FC<CompactLayoutNavigationProps> = ({
         </List>
 
         {/* App Switcher */}
-        <Box sx={{ p: 1 }}>
-          <ListItem disablePadding>
-            <ListItemButton
+
+        <ListItem disablePadding>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? "initial" : "center",
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
               sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
+                minWidth: 0,
+                mr: open ? 2 : "auto",
+                justifyContent: "center",
               }}
             >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 2 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                <AppsIcon />
-              </ListItemIcon>
-              {open && <ListItemText primary="App Switcher" />}
-            </ListItemButton>
-          </ListItem>
-        </Box>
+              <AppsIcon />
+            </ListItemIcon>
+            {open && <ListItemText primary="App Switcher" />}
+          </ListItemButton>
+        </ListItem>
 
         {/* Support */}
-        <Box sx={{ p: 1 }}>
-          <ListItem disablePadding>
-            <ListItemButton
+
+        <ListItem disablePadding>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? "initial" : "center",
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
               sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
+                minWidth: 0,
+                mr: open ? 2 : "auto",
+                justifyContent: "center",
               }}
             >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 2 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                {/* Using a help icon placeholder */}
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
-                  />
-                </svg>
-              </ListItemIcon>
-              {open && <ListItemText primary="Support" />}
-            </ListItemButton>
-          </ListItem>
-        </Box>
+              <SvgIcon>
+                <SupportIcon />
+              </SvgIcon>
+            </ListItemIcon>
+            {open && <ListItemText primary="Support" />}
+          </ListItemButton>
+        </ListItem>
 
         {/* Notifications & Avatar Menu */}
-        <Box sx={{ py: 1 }}>
-          {/* Notifications */}
-          <ListItem disablePadding>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 2 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                <Badge badgeContent={notificationCount} color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </ListItemIcon>
-              {open && <ListItemText primary="Notifications" />}
-            </ListItemButton>
-          </ListItem>
 
-          {/* Avatar Menu */}
-          <ListItem disablePadding>
-            <ListItemButton
+        {/* Notifications */}
+        <ListItem disablePadding>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? "initial" : "center",
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
               sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
+                minWidth: 0,
+                mr: open ? 2 : "auto",
+                justifyContent: "center",
               }}
-              onClick={handleAvatarMenuOpen}
             >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 2 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                {avatarUrl ? (
-                  <Avatar src={avatarUrl} sx={{ width: 24, height: 24 }} />
-                ) : (
-                  <AccountCircleIcon />
-                )}
-              </ListItemIcon>
-              {open && <ListItemText primary="Profile" />}
-            </ListItemButton>
-          </ListItem>
-        </Box>
+              <Badge badgeContent={notificationCount} color="error">
+                <SvgIcon>
+                  <NotificationsIcon />
+                </SvgIcon>
+              </Badge>
+            </ListItemIcon>
+            {open && <ListItemText primary="Notifications" />}
+          </ListItemButton>
+        </ListItem>
+
+        {/* Avatar Menu */}
+        <ListItem disablePadding>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? "initial" : "center",
+              px: 2.5,
+            }}
+            onClick={handleAvatarMenuOpen}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 2 : "auto",
+                justifyContent: "center",
+              }}
+            >
+              {avatarUrl ? (
+                <Avatar src={avatarUrl} sx={{ width: 24, height: 24 }} />
+              ) : (
+                <SvgIcon>
+                  <AvatarIcon />
+                </SvgIcon>
+              )}
+            </ListItemIcon>
+            {open && <ListItemText primary="Profile" />}
+          </ListItemButton>
+        </ListItem>
 
         {/* Avatar Menu Popover */}
         <Menu

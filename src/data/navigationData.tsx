@@ -18,6 +18,7 @@ import HomeIcon from "../assets/icons/HomeIcon.svg";
 import DiscoverIcon from "../assets/icons/DiscoverIcon.svg";
 import MyTeamSkillsIcon from "../assets/icons/MyTeamSkillsIcon.svg";
 import ToolsIcon from "../assets/icons/ToolsIcon.svg";
+import SearchIcon from "../assets/icons/SearchIcon.svg";
 
 const ICON_SIZE = 28; // Define a constant for the icon size
 
@@ -212,6 +213,20 @@ export const adminSecondaryNavItems = [
 
 // Learner menu items
 export const learnerNavItems = [
+  {
+    label: "Search",
+    path: "/search",
+    icon: (
+      <SvgIcon
+        sx={{
+          width: ICON_SIZE,
+          height: ICON_SIZE,
+        }}
+      >
+        <SearchIcon />
+      </SvgIcon>
+    ),
+  },
   {
     label: "Dashboard",
     path: "/dashboard",

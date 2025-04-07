@@ -244,34 +244,23 @@ const NavigationPrototypes = () => {
                 items={
                   dataSet === "learner"
                     ? [
-                        { label: "Home", icon: learnerNavItems[0].icon },
-                        { label: "Discover", icon: learnerNavItems[1].icon },
-                        { label: "Events", icon: learnerNavItems[2].icon },
-                        {
-                          label: "Skills Builder",
-                          icon: learnerNavItems[3].icon,
-                        },
-                        {
-                          label: "My Team Skills",
-                          icon: learnerNavItems[4].icon,
-                        },
+                        learnerNavItems[0],
+                        learnerNavItems[1],
+                        learnerNavItems[2],
+                        learnerNavItems[3],
+                        learnerNavItems[4],
+                        learnerNavItems[5],
                       ]
                     : [
-                        {
-                          label: "Admin Dashboard",
-                          icon: adminNavItems[0].icon,
-                        },
-                        {
-                          label: "Learning Experiences",
-                          icon: adminNavItems[1].icon,
-                        },
-                        { label: "Resources", icon: adminNavItems[2].icon },
-                        { label: "Events", icon: adminNavItems[3].icon },
-                        { label: "Playlists", icon: adminNavItems[4].icon },
-                        { label: "Users", icon: adminNavItems[5].icon },
-                        { label: "Groups", icon: adminNavItems[6].icon },
-                        { label: "Settings", icon: adminNavItems[7].icon },
-                        { label: "Tools", icon: adminNavItems[8].icon }, // Using adminDashboard icon as placeholder for Tools
+                        adminNavItems[0],
+                        adminNavItems[1],
+                        adminNavItems[2],
+                        adminNavItems[3],
+                        adminNavItems[4],
+                        adminNavItems[5],
+                        adminNavItems[6],
+                        adminNavItems[7],
+                        adminNavItems[8],
                       ]
                 }
                 notificationCount={displayedNotificationCount}
